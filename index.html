@@ -1,0 +1,325 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>be1.ru</title>
+</head>
+<body>
+<p>&lt;!DOCTYPE html&gt;<br />
+&lt;html lang=&quot;ru&quot;&gt;<br />
+&lt;head&gt;<br />
+&nbsp; &nbsp; &lt;meta charset=&quot;UTF-8&quot;&gt;<br />
+&nbsp; &nbsp; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;<br />
+&nbsp; &nbsp; &lt;title&gt;Набор Автомобилиста: Собери правильно!&lt;/title&gt;<br />
+&nbsp; &nbsp; &lt;style&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; body {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; font-family: &#39;Arial&#39;, sans-serif;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: #f5f5f5;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; margin: 0;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; padding: 20px;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: #333;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .game-container {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; max-width: 800px;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; margin: 0 auto;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: #fff;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-radius: 10px;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; padding: 20px;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; text-align: center;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; h1 {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: #2980b9;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .step {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; display: none;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .step.active {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; display: block;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .question {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; margin: 20px 0;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; font-size: 18px;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .options {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; display: flex;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; justify-content: center;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; flex-wrap: wrap;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; gap: 15px;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; margin: 20px 0;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .option {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; width: 120px;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; height: 150px;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: #ecf0f1;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-radius: 10px;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; display: flex;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; flex-direction: column;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; align-items: center;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; justify-content: center;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; cursor: pointer;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; transition: transform 0.2s, background-color 0.2s;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border: 2px solid transparent;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; padding: 10px;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; box-sizing: border-box;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .option:hover {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; transform: scale(1.05);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: #bdc3c7;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .option.selected {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: #2980b9;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: white;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-color: #3498db;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .option img {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; width: 80px;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; height: 80px;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; object-fit: contain;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; margin-bottom: 5px;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; button {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: #2980b9;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: white;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border: none;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; padding: 10px 20px;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; margin: 10px;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; border-radius: 5px;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; cursor: pointer;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; font-size: 16px;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; transition: background-color 0.2s;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; button:hover {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: #3498db;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; button:disabled {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: #95a5a6;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; cursor: not-allowed;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .feedback {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; min-height: 20px;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; margin: 10px 0;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; font-weight: bold;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .success {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: #27ae60;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .error {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: #e74c3c;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .score {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; font-size: 18px;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; margin: 20px 0;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; .final-score {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; font-size: 24px;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; font-weight: bold;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: #2980b9;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &lt;/style&gt;<br />
+&lt;/head&gt;<br />
+&lt;body&gt;<br />
+&nbsp; &nbsp; &lt;div class=&quot;game-container&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;h1&gt;Набор Автомобилиста&lt;/h1&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;score&quot;&gt;Баллы: &lt;span id=&quot;score&quot;&gt;0&lt;/span&gt;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &lt;!-- Шаг 1: Выбор аптечки --&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;step active&quot; id=&quot;step1&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;p class=&quot;question&quot;&gt;Что положить в багажник на случай ЧП?&lt;/p&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;options&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;option&quot; data-correct=&quot;true&quot; data-option=&quot;aptechka&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;img src=&quot;https://03portal.ru/wp-content/uploads/2021/08/box-Photoroom.png&quot; alt=&quot;Аптечка&quot; onerror=&quot;this.src=&#39;https://via.placeholder.com/80x80/0077FF/FFFFFF?text=Аптечка&#39;&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span&gt;Аптечка&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;option&quot; data-correct=&quot;false&quot; data-option=&quot;noski&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;img src=&quot;https://static.lichi.com/product/47438/f2ece37561cb8ab4a46c9d24b182dff9.jpg?v=998_1407&quot; alt=&quot;Носки&quot; onerror=&quot;this.src=&#39;https://via.placeholder.com/80x80/FF5500/FFFFFF?text=Носки&#39;&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span&gt;Носки&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;option&quot; data-correct=&quot;false&quot; data-option=&quot;poduska&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;img src=&quot;https://ogogo.ru/images/products/125893/6778c90264982e4f7847fae3af178197.webp&quot; alt=&quot;Подушка&quot; onerror=&quot;this.src=&#39;https://via.placeholder.com/80x80/00AA00/FFFFFF?text=Подушка&#39;&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span&gt;Подушка&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;feedback&quot; id=&quot;feedback1&quot;&gt;&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;button id=&quot;next1&quot; disabled&gt;Далее&lt;/button&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &lt;!-- Шаг 2: Выбор домкрата --&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;step&quot; id=&quot;step2&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;p class=&quot;question&quot;&gt;Что ещё пригодится в багажнике?&lt;/p&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;options&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;option&quot; data-correct=&quot;false&quot; data-option=&quot;snacks&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;img src=&quot;https://sfera.fm/assets/media/articles/45518/orig/0abb1e444e288fc053c15c677391591ff1ffecdd.jpg&quot; alt=&quot;Снеки&quot; onerror=&quot;this.src=&#39;https://via.placeholder.com/80x80/FF0000/FFFFFF?text=Снеки&#39;&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span&gt;Снеки&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;option&quot; data-correct=&quot;true&quot; data-option=&quot;domkrat&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;img src=&quot;https://mekkain.ru/assets/images/resources/20700/9a878fcd8be59de62c1dbf887aa97e18c70b0a51.jpg&quot; alt=&quot;Домкрат&quot; onerror=&quot;this.src=&#39;https://via.placeholder.com/80x80/0000FF/FFFFFF?text=Домкрат&#39;&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span&gt;Домкрат&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;option&quot; data-correct=&quot;false&quot; data-option=&quot;termos&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;img src=&quot;https://thermos.ru/sitefiles//Items/25b59437cd2b0615b56dfcadc3405bd4561a949a.JPG&quot; alt=&quot;Термос&quot; onerror=&quot;this.src=&#39;https://via.placeholder.com/80x80/FFFF00/FFFFFF?text=Термос&#39;&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span&gt;Термос&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;feedback&quot; id=&quot;feedback2&quot;&gt;&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;button id=&quot;next2&quot; disabled&gt;Далее&lt;/button&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &lt;!-- Шаг 3: Выбор свечей зажигания --&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;step&quot; id=&quot;step3&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;p class=&quot;question&quot;&gt;Что положить на случай поломки?&lt;/p&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;options&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;option&quot; data-correct=&quot;false&quot; data-option=&quot;book&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;img src=&quot;https://s.a-5.ru/i/file/161/7/6b/bb/6bbb6aba123ce794.jpg&quot; alt=&quot;Книжка&quot; onerror=&quot;this.src=&#39;https://via.placeholder.com/80x80/8B0000/FFFFFF?text=Книжка&#39;&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span&gt;Книжка&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;option&quot; data-correct=&quot;false&quot; data-option=&quot;kofta&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;img src=&quot;https://static.insales-cdn.com/images/products/1/3224/1000819864/-SinMaQv3Rrr1G5T9tAFuX2LaiB7HV1iizVhc50W7ZmdEk5NjsX0kYPNrumyry_Mokiux98z3qrh9LFqEevw4g__.jpeg&quot; alt=&quot;Кофта&quot; onerror=&quot;this.src=&#39;https://via.placeholder.com/80x80/FF00FF/FFFFFF?text=Кофта&#39;&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span&gt;Кофта&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;option&quot; data-correct=&quot;true&quot; data-option=&quot;svechi&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;img src=&quot;https://f.nodacdn.net/628355&quot; alt=&quot;Свечи для зажигания&quot; onerror=&quot;this.src=&#39;https://via.placeholder.com/80x80/00FFFF/FFFFFF?text=Свечи&#39;&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;span&gt;Свечи для зажигания&lt;/span&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;feedback&quot; id=&quot;feedback3&quot;&gt;&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;button id=&quot;finish&quot; disabled&gt;Завершить&lt;/button&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &lt;!-- Финальный экран --&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;step&quot; id=&quot;final&quot;&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;h2&gt;Поздравляем!&lt;/h2&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;p&gt;Ты собрал набор автомобилиста и набрал:&lt;/p&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;div class=&quot;final-score&quot;&gt;Баллы: &lt;span id=&quot;final-score&quot;&gt;0&lt;/span&gt;&lt;/div&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;p id=&quot;result-text&quot;&gt;&lt;/p&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;button id=&quot;restart&quot;&gt;Играть снова&lt;/button&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br />
+&nbsp; &nbsp; &lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &lt;script&gt;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; let score = 0;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; let selectedOptions = {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; step1: null,<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; step2: null,<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; step3: null<br />
+&nbsp; &nbsp; &nbsp; &nbsp; };</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; // Функция для сброса состояния кнопок<br />
+&nbsp; &nbsp; &nbsp; &nbsp; function resetNextButton(stepId) {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(`next${stepId}`).disabled = true;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; // Функция для переключения шагов<br />
+&nbsp; &nbsp; &nbsp; &nbsp; function goToStep(currentStepId, nextStepId) {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(`step${currentStepId}`).classList.remove(&#39;active&#39;);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(`step${nextStepId}`).classList.add(&#39;active&#39;);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; }</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; // Шаг 1: Выбор аптечки<br />
+&nbsp; &nbsp; &nbsp; &nbsp; document.querySelectorAll(&#39;#step1 .option&#39;).forEach(option =&gt; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; option.addEventListener(&#39;click&#39;, () =&gt; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.querySelectorAll(&#39;#step1 .option&#39;).forEach(o =&gt; o.classList.remove(&#39;selected&#39;));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; option.classList.add(&#39;selected&#39;);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; selectedOptions.step1 = option.dataset.option;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&#39;next1&#39;).disabled = false;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; });<br />
+&nbsp; &nbsp; &nbsp; &nbsp; });</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&#39;next1&#39;).addEventListener(&#39;click&#39;, () =&gt; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; const feedback = document.getElementById(&#39;feedback1&#39;);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (selectedOptions.step1 === &#39;aptechka&#39;) {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; feedback.textContent = &#39;Правильно! Аптечка &mdash; обязательный атрибут.&#39;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; feedback.className = &#39;feedback success&#39;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; score += 10;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&#39;score&#39;).textContent = score;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; } else {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; feedback.textContent = &#39;Неверно! Аптечка должна быть всегда под рукой.&#39;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; feedback.className = &#39;feedback error&#39;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; goToStep(1, 2);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; resetNextButton(2);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; });</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; // Шаг 2: Выбор домкрата<br />
+&nbsp; &nbsp; &nbsp; &nbsp; document.querySelectorAll(&#39;#step2 .option&#39;).forEach(option =&gt; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; option.addEventListener(&#39;click&#39;, () =&gt; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.querySelectorAll(&#39;#step2 .option&#39;).forEach(o =&gt; o.classList.remove(&#39;selected&#39;));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; option.classList.add(&#39;selected&#39;);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; selectedOptions.step2 = option.dataset.option;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&#39;next2&#39;).disabled = false;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; });<br />
+&nbsp; &nbsp; &nbsp; &nbsp; });</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&#39;next2&#39;).addEventListener(&#39;click&#39;, () =&gt; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; const feedback = document.getElementById(&#39;feedback2&#39;);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (selectedOptions.step2 === &#39;domkrat&#39;) {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; feedback.textContent = &#39;Верно! Домкрат выручит при проколе колеса.&#39;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; feedback.className = &#39;feedback success&#39;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; score += 10;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&#39;score&#39;).textContent = score;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; } else {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; feedback.textContent = &#39;Ошибка! Домкрат необходим для замены колеса.&#39;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; feedback.className = &#39;feedback error&#39;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; goToStep(2, 3);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; resetNextButton(3);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; });</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; // Шаг 3: Выбор свечей зажигания<br />
+&nbsp; &nbsp; &nbsp; &nbsp; document.querySelectorAll(&#39;#step3 .option&#39;).forEach(option =&gt; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; option.addEventListener(&#39;click&#39;, () =&gt; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.querySelectorAll(&#39;#step3 .option&#39;).forEach(o =&gt; o.classList.remove(&#39;selected&#39;));<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; option.classList.add(&#39;selected&#39;);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; selectedOptions.step3 = option.dataset.option;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&#39;finish&#39;).disabled = false;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; });<br />
+&nbsp; &nbsp; &nbsp; &nbsp; });</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&#39;finish&#39;).addEventListener(&#39;click&#39;, () =&gt; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; const feedback = document.getElementById(&#39;feedback3&#39;);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (selectedOptions.step3 === &#39;svechi&#39;) {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; feedback.textContent = &#39;Отлично! Свечи зажигания пригодятся в дороге.&#39;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; feedback.className = &#39;feedback success&#39;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; score += 10;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&#39;score&#39;).textContent = score;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; } else {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; feedback.textContent = &#39;Неправильно! Свечи зажигания могут спасти двигатель.&#39;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; feedback.className = &#39;feedback error&#39;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&#39;step3&#39;).classList.remove(&#39;active&#39;);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&#39;final&#39;).classList.add(&#39;active&#39;);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&#39;final-score&#39;).textContent = score;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Текст результата<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; const resultText = document.getElementById(&#39;result-text&#39;);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (score === 30) {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; resultText.textContent = &#39;Ты эксперт! Собрал идеальный набор автомобилиста.&#39;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; } else if (score &gt;= 20) {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; resultText.textContent = &#39;Хорошо! Но можно лучше &mdash; проверь набор ещё раз.&#39;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; } else {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; resultText.textContent = &#39;Пока не очень... Попробуй ещё раз!&#39;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; &nbsp; &nbsp; });</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp; // Рестарт игры<br />
+&nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&#39;restart&#39;).addEventListener(&#39;click&#39;, () =&gt; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; score = 0;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&#39;score&#39;).textContent = score;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.querySelectorAll(&#39;.option&#39;).forEach(option =&gt; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; option.classList.remove(&#39;selected&#39;);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; });<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.querySelectorAll(&#39;.feedback&#39;).forEach(feedback =&gt; {<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; feedback.className = &#39;feedback&#39;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; feedback.textContent = &#39;&#39;;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; });<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&#39;final&#39;).classList.remove(&#39;active&#39;);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&#39;step1&#39;).classList.add(&#39;active&#39;);<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&#39;next1&#39;).disabled = true;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&#39;next2&#39;).disabled = true;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&#39;finish&#39;).disabled = true;<br />
+&nbsp; &nbsp; &nbsp; &nbsp; });<br />
+&nbsp; &nbsp; &lt;/script&gt;<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;<br />
+&nbsp;</p>
+</body>
+</html>
